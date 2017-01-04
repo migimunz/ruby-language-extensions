@@ -1,0 +1,32 @@
+language :pattern_matching
+
+class TestClass
+  let bar(a = Fixnum, b = Fixnum) {
+    a + b
+  }
+
+  let answer_for(question = CompositeQuestion, child_selectors = Hash | Array) {
+    answer_for(question.descendant(*child_selectors))
+  }
+
+  let answer_for(question = Question) {
+    answers.find { |answer| answer.question_id == question.id }
+  }
+
+  # let sentence_with(questions = [*Question], &block) {
+  #   questions.select { |q| answered?(q) }.each do |q|
+  #     concat block.call(answer_for(q))
+  #   end
+  # }
+
+  let fixnum_list([a = Fixnum, b = Fixnum, *rest = Fixnum]) {
+  }
+
+  let reverse([]) {
+    []
+  }
+
+  let reverse([x, *xs]) {
+    reverse(xs) + [x]
+  }
+end
