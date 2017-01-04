@@ -10,6 +10,8 @@ The end goal of this experiment is to create a static type checker for Ruby. How
 
 The extension currently in active development adds pattern matching similar to those in the ML-language family. It currently supports multiple pattern clauses per method, matching against exact values, arbitrarily nested arrays, and binding arbitrary parts of deconstructed objects to variables. Methods defined with `def` still work the same way, `let` introduces pattern matching.
 
+Pattern clauses have their own scope, bound variables are available only in the clause that defines them. Multiple clauses can describe the same method/function, as long as they're in the same scope (class or module)
+
 ### Example 1 - reverse function
 ```ruby
   let reverse([]) {
